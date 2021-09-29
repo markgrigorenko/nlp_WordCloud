@@ -1,0 +1,14 @@
+import matplotlib.pyplot as plt
+
+text = input('Введите текст для анализа: \n')
+
+def canvas(wordcloud):
+    plt.figure(figsize=(80, 60))
+    plt.imshow(wordcloud) 
+    plt.axis("off");
+
+
+from wordcloud import WordCloud, STOPWORDS
+wordcloud = WordCloud(width = 4000, height = 3000, random_state=7, background_color='black', colormap='ocean_r', collocations=False, stopwords = STOPWORDS).generate(text)
+canvas(wordcloud)
+wordcloud.to_file("wordcloud.png")
